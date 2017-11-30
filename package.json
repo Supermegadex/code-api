@@ -1,0 +1,28 @@
+{
+  "name": "code-api",
+  "version": "1.0.0",
+  "description": "Recreation of code.org's JavaScript API",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Supermegadex/code-api.git"
+  },
+  "keywords": [
+    "code.org",
+    "javascript",
+    "turtle",
+    "es6"
+  ],
+  "author": "Daniel Noon",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Supermegadex/code-api/issues"
+  },
+  "homepage": "https://github.com/Supermegadex/code-api#readme"
+}
