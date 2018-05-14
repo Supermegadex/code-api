@@ -1,13 +1,14 @@
 {
   "name": "code-api",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Recreation of code.org's JavaScript API",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "src"
   },
   "scripts": {
-    "test": "mocha"
+    "build": "webpack --prod",
+    "test": "concurrently 'webpack --watch --debug --config webpack.test.js' 'serve test/www'"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,14 @@
   "bugs": {
     "url": "https://github.com/Supermegadex/code-api/issues"
   },
-  "homepage": "https://github.com/Supermegadex/code-api#readme"
+  "homepage": "https://github.com/Supermegadex/code-api#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^3.5.1",
+    "serve": "^6.5.6",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
+  }
 }
