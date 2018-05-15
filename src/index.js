@@ -1,4 +1,5 @@
-import { defaultStyles, StyleManager } from './styles';
+import { defaultStyles, StyleManager }
+  from './styles';
 
 /**
  * Unofficial code.org api recreation for ES6
@@ -243,19 +244,21 @@ class Library {
     const center = left ? -90 : 90;
     const deg = left ? -angle : angle;
     if (this.ctx) {
-      var x1 = this.turtle.x + radius * Math.sin(2 * Math.PI * (this.turtle.rot + center) / 360);
-      var y1 = this.turtle.y - radius * Math.cos(2 * Math.PI * (this.turtle.rot + center) / 360);
+      let x1 = this.turtle.x + radius *
+        Math.sin(2 * Math.PI * (this.turtle.rot + center) / 360);
+      let y1 = this.turtle.y - radius *
+        Math.cos(2 * Math.PI * (this.turtle.rot + center) / 360);
 
-      var start = 2 * Math.PI * (this.turtle.rot + (left ? 0 : 180)) / 360;
-      var end = start + (2 * Math.PI * deg / 360);
+      let start = 2 * Math.PI * (this.turtle.rot + (left ? 0 : 180)) / 360;
+      let end = start + (2 * Math.PI * deg / 360);
 
       this.ctx.beginPath();
       this.ctx.arc(x1, y1, radius, start, end, left);
       this.ctx.stroke();
 
       this.turtle.rot = (this.turtle.rot + deg + 360) % 360;
-      var x2 = radius * Math.cos(2 * Math.PI * this.turtle.rot / 360);
-      var y2 = radius * Math.sin(2 * Math.PI * this.turtle.rot / 360);
+      let x2 = radius * Math.cos(2 * Math.PI * this.turtle.rot / 360);
+      let y2 = radius * Math.sin(2 * Math.PI * this.turtle.rot / 360);
       this.turtle.x = x1 + (left ? x2 : -x2);
       this.turtle.y = y1 + (left ? y2 : -y2);
     }
@@ -466,16 +469,42 @@ class Library {
     document.getElementById(id).hidden = true;
   }
 
+  /**
+   * Delete an element
+   * @param {string} id Element id
+   */
   deleteElement(id) {
-
+    const el = document.querySelector(id);
+    el.remove();
   }
 
+  /**
+   * Change the position of an existing element
+   * @param {string} id Element id
+   * @param {number} x X-coordinate
+   * @param {number} y Y-coordinate
+   * @param {number} width Width
+   * @param {number} height Height
+   */
   setPosition(id, x, y, width, height) {
+    const el = document.querySelector(id);
 
+    const styles = StyleManager.genCustom(x, y, width, height);
+    StyleManager.apply(el, styles);
   }
 
+  /**
+   * Set only the width and height of an element
+   * @param {string} id Element id
+   * @param {number} width Width
+   * @param {number} height Height
+   */
   setSize(id, width, height) {
+    const el = document.querySelector(id);
+    const x = el.style.left, y = el.style.top;
 
+    const styles = StyleManager.genCustom(x, y, width, height);
+    StyleManager.apply(el, styles);
   }
 
   getProperty(id, property) {
@@ -499,7 +528,7 @@ class Library {
   }
 
   setScreen(id) {
-
+    console.log("Sorry! Screens are not supported yet!")
   }
 }
 

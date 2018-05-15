@@ -82,6 +82,8 @@ class StyleManager {
     if (y || x === 0) custom.top = y + "px";
     return custom;
   }
+
+  static setProperty(el, )
 }
 
 export { defaultStyles, StyleManager };
