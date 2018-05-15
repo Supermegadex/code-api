@@ -1,8 +1,9 @@
 import { defaultStyles, StyleManager } from './styles';
+
 /**
  * Unofficial code.org api recreation for ES6
  */
-export default class Library {
+class Library {
   /**
    * Create a new instance of the library
    * @param {string | HTMLElement} root DOM node for ui elements
@@ -105,6 +106,7 @@ export default class Library {
 
   /**
    * Get the x-position of the turtle
+   * @returns {number} X-coordinate
    */
   getX() {
     return this.turtle.x;
@@ -112,6 +114,7 @@ export default class Library {
 
   /**
    * Get the y-position of the turtle
+   * @returns {number} Y-coordinate
    */
   getY() {
     return this.turtle.y;
@@ -158,6 +161,7 @@ export default class Library {
 
   /**
    * Get the current angle the turtle is facing
+   * @returns {number} Angle turtle is facing
    */
   getDirection() {
     let dir = this.turtle.rot;
@@ -347,6 +351,7 @@ export default class Library {
    * Finds the most appropriate text field of an element
    * for you
    * @param {string} id Element id
+   * @returns {string} Text content of element
    */
   getText(id) {
     const el = document.getElementById(id);
@@ -414,6 +419,7 @@ export default class Library {
   /**
    * Get the url of an image on the page
    * @param {string} id Id of image element
+   * @returns {string} Image URL
    */
   getImageUrl(id) {
     const img = document.getElementById(id);
@@ -496,3 +502,5 @@ export default class Library {
 
   }
 }
+
+export default Library;

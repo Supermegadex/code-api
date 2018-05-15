@@ -1,13 +1,13 @@
 {
   "name": "code-api",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Recreation of code.org's JavaScript API",
   "main": "src/index.js",
   "directories": {
     "lib": "src"
   },
   "scripts": {
-    "build": "webpack --prod",
+    "build": "jsdoc src -d docs",
     "test": "concurrently 'webpack --watch --debug --config webpack.test.js' 'serve test/www'"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "concurrently": "^3.5.1",
+    "jsdoc": "^3.5.5",
     "serve": "^6.5.6",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"

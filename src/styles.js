@@ -1,6 +1,8 @@
-export const defaultStyles = {
-  default: {
-  },
+/**
+ * Container for code-api default styling of different elements
+ * @constant
+ */
+const defaultStyles = {
   button: {
     "padding": "0px",
     "margin": "0px",
@@ -49,7 +51,10 @@ export const defaultStyles = {
   }
 }
 
-export class StyleManager {
+/**
+ * Manage code-api elements' styles
+ */
+class StyleManager {
   /**
    * Apply an object with CSS key-value pairs to 
    * @param {HTMLElement} element Element to apply styles
@@ -61,6 +66,14 @@ export class StyleManager {
     }
   }
 
+  /**
+   * Generate position and size styles for an element
+   * @param {number} x X-coordinate
+   * @param {number} y Y-coordinate
+   * @param {number} width Width
+   * @param {number} height Height
+   * @returns {object} CSS object
+   */
   static genCustom(x, y, width, height) {
     const custom = {};
     if (width) custom.width = width + "px";
@@ -70,3 +83,5 @@ export class StyleManager {
     return custom;
   }
 }
+
+export { defaultStyles, StyleManager };
