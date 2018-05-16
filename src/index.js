@@ -458,10 +458,20 @@ class Library {
     }
   }
 
+  /**
+   * Play an audio file
+   * @todo
+   * @param {string} src Audio URI
+   */
   playSound(src) {
 
   }
 
+  /**
+   * Stop an audio source
+   * @todo
+   * @param {string} src Audio URI
+   */
   stopSound(src) {
 
   }
@@ -520,6 +530,12 @@ class Library {
     StyleManager.apply(el, styles);
   }
 
+  /**
+   * Get a property of an element
+   * @todo
+   * @param {string} id Element id
+   * @param {string} property Property to get
+   */
   getProperty(id, property) {
 
   }
@@ -554,16 +570,54 @@ class Library {
     el.textContent = textContent;
   }
 
+  /**
+   * Get x-coordinate of an element
+   * @param {string} id Element id
+   * @returns {number} X-coordinate
+   */
   getXPosition(id) {
-
+    return document.getElementById(id).offsetLeft;
   }
 
+  /**
+   * Get y-coordinate of an element
+   * @param {string} id Element Id
+   * @returns {number} Y-coordinate
+   */
   getYPosition(id) {
-
+    return document.getElementById(id).offsetTop;
   }
 
   setScreen(id) {
     console.log("Sorry! Screens are not supported yet!")
+  }
+
+  /**
+   * Insert an item into a list at specified index
+   * @param {Array} list List
+   * @param {number} index Index of list
+   * @param {*} item Value to insert
+   */
+  insertItem(list, index, item) {
+    list.splice(index, 0, item);
+  }
+
+  /**
+   * Append an item to a list
+   * @param {Array} list List
+   * @param {*} item Item to append
+   */
+  appendItem(list, item) {
+    list.push(item);
+  }
+
+  /**
+   * Remove an item from a list at given index
+   * @param {Array} list List
+   * @param {number} index Index
+   */
+  removeItem(list, index) {
+    list.splice(index, 1);
   }
 }
 
