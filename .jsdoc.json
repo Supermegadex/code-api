@@ -9,7 +9,7 @@
   "source": {
     "include": [
       "src",
-      "README.md"
+      "readme.md"
     ],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
