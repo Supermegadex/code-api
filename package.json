@@ -7,7 +7,7 @@
     "lib": "src"
   },
   "scripts": {
-    "build": "jsdoc src -d docs",
+    "build": "jsdoc --configure .jsdoc.json",
     "test": "concurrently \"webpack --watch --config webpack.test.js\" \"serve test/www\""
   },
   "repository": {
@@ -32,6 +32,7 @@
     "babel-preset-env": "^1.7.0",
     "concurrently": "^3.5.1",
     "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
     "serve": "^6.5.6",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"

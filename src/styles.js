@@ -53,7 +53,48 @@ const defaultStyles = {
     "top": "245px",
     "margin": "0px",
     "object-fit": "contain"
+  },
+  write: {
+    "z-index": "-1",
+    "white-space": "pre-wrap"
   }
+}
+
+/**
+ * Default proprty keys for editing element props and styles.
+ * @constant
+ */
+const defaultProps = {
+  "text": (el, val) => {
+    if (el.nodeName === "INPUT") {
+      el.value = val;
+    }
+    else el.innerText = value;
+  },
+  "width": (el, val, prop) =>
+    StyleManager.setStyle(el, prop, val),
+  "height": (el, val, prop) =>
+    StyleManager.setStyle(el, prop, val),
+  "x": (el, val) =>
+    StyleManager.setStyle(el, "left", val),
+  "y": (el, val) =>
+    StyleManager.setStyle(el, "top", val),
+  "text-color": (el, val) =>
+    StyleManager.setStyle(el, "color", val),
+  "background-color": (el, val, prop) =>
+    StyleManager.setStyle(el, prop, val),
+  "font-size": (el, val, prop) =>
+    StyleManager.setStyle(el, prop, val),
+  "image": (el, val) =>
+    StyleManager.setAttribute(el, "src", val),
+  "hidden": (el, val, prop) =>
+    StyleManager.setAttribute(el, prop, val),
+  "placeholder": (el, val, prop) =>
+    StyleManager.setAttribute(el, prop, val),
+  "text-align": (el, val, prop) =>
+    StyleManager.setStyle(el, prop, val),
+  "value": (el, val, prop) =>
+    StyleManager.setAttribute(el, prop, val),
 }
 
 /**
@@ -92,11 +133,39 @@ class StyleManager {
    * Set a supported style property seamlessly
    * @param {HTMLElement} el Target element
    * @param {string} prop Property to set
-   * @param value Value to assign
+   * @param {*} value Value to assign
+   * @param {object} [props] Object of valid properties
+   * @returns Whaever the application function returns
    */
-  static setProperty(el, prop, value) {
-    console.log("setting properties is coming soon");
+  static setProperty(el, prop, value, props) {
+    if (!props) props = defaultProps;
+    return props[prop](el, value, prop);
+  }
+
+  /**
+   * Set a CSS style with added number support
+   * @param {HTMLElement} el Element 
+   * @param {string} prop CSS property to set
+   * @param {string|number} value Value to apply
+   * @returns The value that was passed
+   */
+  static setStyle(el, prop, value) {
+    const numRegEx = /^[0-9]*$/g;
+    if (numRegEx.test(value)) value = `${value}px`;
+    el.style.setProperty(prop, value);
+    return value;
+  }
+
+  /**
+   * Set any HTML attribute, including `data-` ones.
+   * @param {HTMLElement} el Element
+   * @param {string} attr Attribute to set
+   * @param {string|number|boolean} value Value to apply
+   */
+  static setAttribute(el, attr, value) {
+    el.setAttribute(attr, value);
+    return value;
   }
 }
 
-export { defaultStyles, StyleManager };
+export { defaultStyles, StyleManager, defaultProps };

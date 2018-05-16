@@ -91,6 +91,7 @@ your project in and change your terminal directory to it. (i.e.
            ```
         3. You can add other scripts as well; just add another property
            to the scripts object!
+
 ### Step Two: Configure Webpack
 Like all computery things, you either need to conform to Webpack or
 Webpack needs to conform to you. The authors of Webpack decided that
@@ -98,6 +99,7 @@ it would be better for the latter to be true. Therefore, we need to
 tell Webpack how to serve us. It is pretty simple to do. Create a new
 file called `webpack.config.js` in your project folder. Copy and paste
 this into the file:
+
 ```javascript
 const path = require('path');
 

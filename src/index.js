@@ -3,7 +3,7 @@
  * @module code-api
  */
 
-import { defaultStyles, StyleManager }
+import { defaultStyles, defaultProps, StyleManager }
   from './styles';
 
 /**
@@ -302,6 +302,7 @@ class Library {
    * @param {number} height Height of button
    */
   button(id, text, x, y, width, height) {
+    if (document.getElementById(id)) return false;
     const button = document.createElement('button');
     button.id = id;
     button.innerText = text;
@@ -322,6 +323,7 @@ class Library {
    * @param {number} height Height of input
    */
   textInput(id, placeholder, x, y, width, height) {
+    if (document.getElementById(id)) return false;
     const input = document.createElement('input');
     input.id = id;
     input.placeholder = placeholder;
@@ -342,6 +344,7 @@ class Library {
    * @param {number} height Height of label
    */
   textLabel(id, text, x, y, width, height) {
+    if (document.getElementById(id)) return false;
     const label = document.createElement('label');
     label.id = id;
     label.innerText = text;
@@ -521,12 +524,34 @@ class Library {
 
   }
 
+  /**
+   * Set an element's property
+   * @param {string} id Element id
+   * @param {string} property Property to set
+   * @param {*} value Value to apply
+   */
   setProperty(id, property, value) {
-
+    const el = document.getElementById(id);
+    StyleManager.setProperty(el, property, value, defaultProps);
   }
 
+  /**
+   * Simply write some text to the screen
+   * @param {string} text Test to write
+   */
   write(text) {
-
+    let el = document.querySelector('div.write-content[data-write-content]');
+    if (!el) {
+      console.log("Write element doesn't exist! Creating...")
+      el = document.createElement("div");
+      el.className = "write-content";
+      el.setAttribute('data-write-content', true);
+      StyleManager.apply(el, defaultStyles.write);
+      this.root.appendChild(el);
+    }
+    let textContent = el.textContent || "";
+    textContent += "\n" + text;
+    el.textContent = textContent;
   }
 
   getXPosition(id) {
