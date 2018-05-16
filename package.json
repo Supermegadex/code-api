@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "jsdoc src -d docs",
-    "test": "concurrently 'webpack --watch --debug --config webpack.test.js' 'serve test/www'"
+    "test": "concurrently \"webpack --watch --config webpack.test.js\" \"serve test/www\""
   },
   "repository": {
     "type": "git",

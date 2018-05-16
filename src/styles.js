@@ -1,4 +1,9 @@
 /**
+ * Module to keep track of styling elements
+ * @module styles
+ */
+
+/**
  * Container for code-api default styling of different elements
  * @constant
  */
@@ -83,7 +88,15 @@ class StyleManager {
     return custom;
   }
 
-  static setProperty(el, )
+  /**
+   * Set a supported style property seamlessly
+   * @param {HTMLElement} el Target element
+   * @param {string} prop Property to set
+   * @param value Value to assign
+   */
+  static setProperty(el, prop, value) {
+    console.log("setting properties is coming soon");
+  }
 }
 
 export { defaultStyles, StyleManager };

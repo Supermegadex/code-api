@@ -1,3 +1,8 @@
+/**
+ * Code.org API library
+ * @module code-api
+ */
+
 import { defaultStyles, StyleManager }
   from './styles';
 
@@ -7,11 +12,11 @@ import { defaultStyles, StyleManager }
 class Library {
   /**
    * Create a new instance of the library
-   * @param {string | HTMLElement} root DOM node for ui elements
-   * @param {string | CanvasRenderingContext2D} ctx Canvas 2D context or a string selector for a canvas element
+   * @param {string|HTMLElement} root DOM node for ui elements
+   * @param {string|CanvasRenderingContext2D} ctx Canvas 2D context or a string selector for a canvas element
    * @param {number} width Canvas width
    * @param {number} height canvas height
-   * @param {boolean} global Make the class members pollute the global namespace (not recommended)
+   * @param {boolean} [global] Make the class members pollute the global namespace (not recommended)
    */
   constructor(root, ctx, width, height, global) {
     if (typeof (Number.prototype.toRad) === "undefined") {
@@ -44,6 +49,7 @@ class Library {
       width: 5
     };
 
+    console.log(this);
     if (global) {
       for (let i in this) {
         window[i] = this[i];
@@ -450,6 +456,10 @@ class Library {
   }
 
   playSound(src) {
+
+  }
+
+  stopSound(src) {
 
   }
 
